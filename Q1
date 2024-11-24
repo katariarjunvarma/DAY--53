@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <unordered_set>
+
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+
+    vector<int> 1  itemIds(N);
+    for (int i = 0; i < N; i++) {
+        cin >> itemIds[i];
+    }
+
+    int ID;
+    cin >> ID;
+
+    // Remove duplicates and sort
+    unordered_set<int> uniqueIds(itemIds.begin(), itemIds.end());
+    vector<int> sortedIds(uniqueIds.begin(), uniqueIds.end());
+    sort(sortedIds.begin(), sortedIds.end());
+
+    // Print unique item IDs
+    for (int id : sortedIds) {
+        cout << id << " ";
+    }
+    cout << endl;
+
+    // Check availability
+    if (uniqueIds.count(ID)) {
+        cout << "Available\n";
+    } else {
+        cout << "Not Available\n";
+    }
+
+    // Find the total number of unique items
+    cout << uniqueIds.size() << endl;
+
+    return 0;
+}
